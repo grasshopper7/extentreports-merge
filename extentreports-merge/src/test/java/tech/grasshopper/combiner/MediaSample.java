@@ -25,7 +25,7 @@ public class MediaSample {
 	}
 
 	@Test
-	public void combineTwoRerunReports() {
+	public void rerunTwoReports() {
 
 		String[] jsonReports = { "sample/rerun/media/2 reports/first/ExtentJson.json",
 				"sample/rerun/media/2 reports/second/ExtentJson.json" };
@@ -39,7 +39,7 @@ public class MediaSample {
 	}
 
 	@Test
-	public void combineThreeRerunReports() {
+	public void rerunThreeReports() {
 
 		String[] jsonReports = { "sample/rerun/media/3 reports/first/ExtentJson.json",
 				"sample/rerun/media/3 reports/second/ExtentJson.json",
