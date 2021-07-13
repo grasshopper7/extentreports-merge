@@ -30,7 +30,7 @@ public interface ReportType {
 			String matchingStrategy = options.getMatchingScenarioTestStrategy();
 			if (null != matchingStrategy && !matchingStrategy.isEmpty())
 				baseReportType
-						.setMatchingScenarioTestStrategy(MatchingScenarioTestStrategy.createStrategy(matchingStrategy));
+						.setMatchingScenarioTestStrategy(MatchingScenarioTestStrategy.createMatchingStrategy(matchingStrategy));
 
 			return baseReportType;
 		}
@@ -42,9 +42,8 @@ public interface ReportType {
 					.primaryJsonReportCheckStrategy(new RerunPrimaryJsonReportCheckStrategy())
 					.secondaryJsonReportCheckStrategy(new RerunSecondaryJsonReportCheckStrategy()).build();
 
-		throw new CombinerException("There is no matching in built report for the provided type - '"
-				+ options.getReportType()
-				+ "'. Use the 'extraScenarioTestStrategy' and 'matchingScenarioTestStrategy' properties only to set up custom report.");
+		throw new CombinerException(
+				"There is no matching in built report for the provided type - '" + options.getReportType() + "'.");
 	}
 
 	public abstract void generateReport();
