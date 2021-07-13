@@ -7,7 +7,7 @@ import tech.grasshopper.combiner.pojo.Test;
 
 public interface MatchingScenarioTestStrategy {
 
-	public static MatchingScenarioTestStrategy createStrategy(String strategy) {
+	public static MatchingScenarioTestStrategy createMatchingStrategy(String strategy) {
 
 		if (strategy.equalsIgnoreCase("earlier"))
 			return new EarlierScenarioTestStrategy();
