@@ -12,8 +12,7 @@ public class ArrayOptionsInputType extends OptionsInputType {
 	private String[] options;
 
 	private static final String REPORT_TYPE_OPTION = "-reportType";
-	// private static final String EXTRA_SCENARIO_TEST_STRATEGY_OPTION =
-	// "-extraStrategy";
+	private static final String EXTRA_SCENARIO_TEST_STRATEGY_OPTION = "-extraStrategy";
 	private static final String MATCHING_SCENARIO_TEST_STRATEGY_OPTION = "-matchingStrategy";
 	private static final String JSON_REPORT_PATHS_OPTION = "-jsonReportPaths";
 	private static final String MEDIA_PATHS_OPTION = "-mediaPaths";
@@ -32,6 +31,9 @@ public class ArrayOptionsInputType extends OptionsInputType {
 			if (option.equalsIgnoreCase(REPORT_TYPE_OPTION)) {
 				value = getValue(i, REPORT_TYPE_OPTION);
 				pojoOptions.setReportType(value);
+			} else if (option.equalsIgnoreCase(EXTRA_SCENARIO_TEST_STRATEGY_OPTION)) {
+				value = getValue(i, EXTRA_SCENARIO_TEST_STRATEGY_OPTION);
+				pojoOptions.setExtraScenarioTestStrategy(value);
 			} else if (option.equalsIgnoreCase(MATCHING_SCENARIO_TEST_STRATEGY_OPTION)) {
 				value = getValue(i, MATCHING_SCENARIO_TEST_STRATEGY_OPTION);
 				pojoOptions.setMatchingScenarioTestStrategy(value);

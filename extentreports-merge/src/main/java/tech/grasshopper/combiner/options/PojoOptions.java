@@ -3,7 +3,12 @@ package tech.grasshopper.combiner.options;
 import java.util.List;
 
 import lombok.Builder;
+import lombok.Builder.Default;
 import lombok.Data;
+import tech.grasshopper.combiner.strategy.check.PrimaryJsonReportCheckStrategy;
+import tech.grasshopper.combiner.strategy.check.SecondaryJsonReportCheckStrategy;
+import tech.grasshopper.combiner.strategy.extra.ExtraScenarioTestStrategy.AddExtraScenarioTestStrategy;
+import tech.grasshopper.combiner.strategy.matching.MatchingScenarioTestStrategy.LaterScenarioTestStrategy;;
 
 @Data
 @Builder
@@ -11,17 +16,22 @@ public class PojoOptions {
 
 	// combine, rerun
 	private String reportType;
+
 	// add, error
-	// private String extraScenarioTestStrategy;
+	@Default
+	private String extraScenarioTestStrategy = AddExtraScenarioTestStrategy.NAME;
+
 	// earlier, later, highstatus, lowstatus, passrerun
-	private String matchingScenarioTestStrategy;
+	@Default
+	private String matchingScenarioTestStrategy = LaterScenarioTestStrategy.NAME;
 
 	// default, rerun
-	// private String primaryJsonReportCheckStrategy;
+	@Default
+	private String primaryJsonReportCheckStrategy = PrimaryJsonReportCheckStrategy.NAME;
+
 	// default, rerun
-	// private String secondaryJsonReportCheckStrategy;
-	// default, rerun
-	// private String scenarioTestProcessCheckStrategy;
+	@Default
+	private String secondaryJsonReportCheckStrategy = SecondaryJsonReportCheckStrategy.NAME;
 
 	private List<String> jsonReportPaths;
 	private List<String> mediaPaths;

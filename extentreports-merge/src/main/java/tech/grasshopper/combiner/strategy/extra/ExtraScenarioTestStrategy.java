@@ -7,6 +7,21 @@ import tech.grasshopper.combiner.pojo.Test;
 
 public interface ExtraScenarioTestStrategy {
 
+	public static ExtraScenarioTestStrategy createExtraStrategy(String strategy) {
+
+		if (null == strategy || strategy.equals("") || strategy.equalsIgnoreCase(AddExtraScenarioTestStrategy.NAME))
+			return new AddExtraScenarioTestStrategy();
+
+		if (strategy.equalsIgnoreCase(ErrorExtraScenarioTestStrategy.NAME))
+			return new ErrorExtraScenarioTestStrategy();
+
+		try {
+			return (ExtraScenarioTestStrategy) Class.forName(strategy).newInstance();
+		} catch (Exception e) {
+			throw new CombinerException("There is no extra scenario test strategy available for - '" + strategy + "'.");
+		}
+	}
+
 	void processExtraSecondaryFeatureTest(List<Test> primaryFeatureTests, Test secondaryFeatureTest);
 
 	void processExtraSecondaryScenarioOutlineTest(Test primaryFeatureTest, Test secondaryScenarioOutlineTest);
@@ -14,6 +29,8 @@ public interface ExtraScenarioTestStrategy {
 	void processExtraSecondaryScenarioTest(Test primaryFeatureOrScenarioOutlineTest, Test secondaryScenarioTest);
 
 	public class AddExtraScenarioTestStrategy implements ExtraScenarioTestStrategy {
+		public static final String NAME = "ADD";
+
 		@Override
 		public void processExtraSecondaryFeatureTest(List<Test> primaryFeatureTests, Test secondaryFeatureTest) {
 			primaryFeatureTests.add(secondaryFeatureTest);
@@ -33,6 +50,8 @@ public interface ExtraScenarioTestStrategy {
 	}
 
 	public class ErrorExtraScenarioTestStrategy implements ExtraScenarioTestStrategy {
+		public static final String NAME = "ERROR";
+
 		@Override
 		public void processExtraSecondaryFeatureTest(List<Test> primaryFeatureTests, Test secondaryFeatureTest) {
 			throw new CombinerException("Rerun feature not present in master JSON report.");

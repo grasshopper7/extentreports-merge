@@ -9,23 +9,26 @@ public interface MatchingScenarioTestStrategy {
 
 	public static MatchingScenarioTestStrategy createMatchingStrategy(String strategy) {
 
-		if (strategy.equalsIgnoreCase("earlier"))
-			return new EarlierScenarioTestStrategy();
-
-		if (strategy.equalsIgnoreCase("later"))
+		if (null == strategy || strategy.equals("") || strategy.equalsIgnoreCase(LaterScenarioTestStrategy.NAME))
 			return new LaterScenarioTestStrategy();
 
-		if (strategy.equalsIgnoreCase("lowstatus"))
+		if (strategy.equalsIgnoreCase(EarlierScenarioTestStrategy.NAME))
+			return new EarlierScenarioTestStrategy();
+
+		if (strategy.equalsIgnoreCase(LowStatusScenarioTestStrategy.NAME))
 			return new LowStatusScenarioTestStrategy();
 
-		if (strategy.equalsIgnoreCase("highstatus"))
+		if (strategy.equalsIgnoreCase(HighStatusScenarioTestStrategy.NAME))
 			return new HighStatusScenarioTestStrategy();
 
-		if (strategy.equalsIgnoreCase("rerunpass"))
+		if (strategy.equalsIgnoreCase(RerunPassScenarioTestStrategy.NAME))
 			return new RerunPassScenarioTestStrategy();
 
-		throw new CombinerException(
-				"There is no matching in built report for the provided matching scenario strategy - " + strategy + ".");
+		try {
+			return (MatchingScenarioTestStrategy) Class.forName(strategy).newInstance();
+		} catch (Exception e) {
+			throw new CombinerException("There is no matching scenario test strategy availble for - " + strategy + ".");
+		}
 	}
 
 	Test select(Test primaryScenarioTest, Test secondaryScenarioTest);

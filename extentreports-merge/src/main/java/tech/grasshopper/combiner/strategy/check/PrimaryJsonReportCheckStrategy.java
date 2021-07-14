@@ -8,11 +8,29 @@ import tech.grasshopper.combiner.search.SearchTest;
 
 public class PrimaryJsonReportCheckStrategy {
 
-	public void execute(List<Test> test) {
+	public static final String NAME = "DEFAULT";
 
+	public static PrimaryJsonReportCheckStrategy createPrimaryJsonStrategy(String strategy) {
+
+		if (strategy == null || strategy.isEmpty() || strategy.equalsIgnoreCase(PrimaryJsonReportCheckStrategy.NAME))
+			return new PrimaryJsonReportCheckStrategy();
+
+		if (strategy.equalsIgnoreCase(RerunPrimaryJsonReportCheckStrategy.NAME))
+			return new RerunPrimaryJsonReportCheckStrategy();
+
+		try {
+			return (PrimaryJsonReportCheckStrategy) Class.forName(strategy).newInstance();
+		} catch (Exception e) {
+			throw new CombinerException(
+					"There is no primary json report check strategy available for - '" + strategy + "'.");
+		}
+	}
+
+	public void execute(List<Test> test) {
 	}
 
 	public static class RerunPrimaryJsonReportCheckStrategy extends PrimaryJsonReportCheckStrategy {
+		public static final String NAME = "RERUN";
 
 		@Override
 		public void execute(List<Test> tests) {
