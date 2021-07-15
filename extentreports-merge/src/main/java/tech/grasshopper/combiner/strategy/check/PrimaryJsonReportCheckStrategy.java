@@ -26,14 +26,14 @@ public class PrimaryJsonReportCheckStrategy {
 		}
 	}
 
-	public void execute(List<Test> test) {
+	public void executeCheck(List<Test> test) {
 	}
 
 	public static class RerunPrimaryJsonReportCheckStrategy extends PrimaryJsonReportCheckStrategy {
 		public static final String NAME = "RERUN";
 
 		@Override
-		public void execute(List<Test> tests) {
+		public void executeCheck(List<Test> tests) {
 			if (SearchTest.failFeatureTestStatusCount(tests) == 0)
 				throw new CombinerException("No failed test in master JSON report.");
 		}

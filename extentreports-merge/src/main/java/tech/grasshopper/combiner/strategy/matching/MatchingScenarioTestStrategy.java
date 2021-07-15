@@ -31,13 +31,13 @@ public interface MatchingScenarioTestStrategy {
 		}
 	}
 
-	Test select(Test primaryScenarioTest, Test secondaryScenarioTest);
+	Test selectScenarioTest(Test primaryScenarioTest, Test secondaryScenarioTest);
 
 	public class EarlierScenarioTestStrategy implements MatchingScenarioTestStrategy {
 		public static final String NAME = "EARLIER";
 
 		@Override
-		public Test select(Test primaryScenarioTest, Test secondaryScenarioTest) {
+		public Test selectScenarioTest(Test primaryScenarioTest, Test secondaryScenarioTest) {
 			return secondaryScenarioTest.getStartTime().before(primaryScenarioTest.getStartTime())
 					? secondaryScenarioTest
 					: primaryScenarioTest;
@@ -48,7 +48,7 @@ public interface MatchingScenarioTestStrategy {
 		public static final String NAME = "LATER";
 
 		@Override
-		public Test select(Test primaryScenarioTest, Test secondaryScenarioTest) {
+		public Test selectScenarioTest(Test primaryScenarioTest, Test secondaryScenarioTest) {
 			return secondaryScenarioTest.getStartTime().after(primaryScenarioTest.getStartTime())
 					? secondaryScenarioTest
 					: primaryScenarioTest;
@@ -59,7 +59,7 @@ public interface MatchingScenarioTestStrategy {
 		public static final String NAME = "HIGHSTATUS";
 
 		@Override
-		public Test select(Test primaryScenarioTest, Test secondaryScenarioTest) {
+		public Test selectScenarioTest(Test primaryScenarioTest, Test secondaryScenarioTest) {
 			return secondaryScenarioTest.getStatus().getLevel() > primaryScenarioTest.getStatus().getLevel()
 					? secondaryScenarioTest
 					: primaryScenarioTest;
@@ -70,7 +70,7 @@ public interface MatchingScenarioTestStrategy {
 		public static final String NAME = "LOWSTATUS";
 
 		@Override
-		public Test select(Test primaryScenarioTest, Test secondaryScenarioTest) {
+		public Test selectScenarioTest(Test primaryScenarioTest, Test secondaryScenarioTest) {
 			return secondaryScenarioTest.getStatus().getLevel() < primaryScenarioTest.getStatus().getLevel()
 					? secondaryScenarioTest
 					: primaryScenarioTest;
@@ -81,7 +81,7 @@ public interface MatchingScenarioTestStrategy {
 		public static final String NAME = "PASSSTATUS";
 
 		@Override
-		public Test select(Test primaryScenarioTest, Test secondaryScenarioTest) {
+		public Test selectScenarioTest(Test primaryScenarioTest, Test secondaryScenarioTest) {
 			return (primaryScenarioTest.getStatus() == Status.FAIL && secondaryScenarioTest.getStatus() == Status.PASS)
 					? secondaryScenarioTest
 					: primaryScenarioTest;

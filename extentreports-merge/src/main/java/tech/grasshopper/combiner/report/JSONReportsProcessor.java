@@ -72,7 +72,7 @@ public class JSONReportsProcessor {
 
 	protected void processMatchingScenarioTest(Test primaryFeatureOrScenarioOutlineTest, Test primaryScenarioTest,
 			Test secondaryScenarioTest) {
-		Test selectedTest = reportType.getMatchingScenarioTestStrategy().select(primaryScenarioTest,
+		Test selectedTest = reportType.getMatchingScenarioTestStrategy().selectScenarioTest(primaryScenarioTest,
 				secondaryScenarioTest);
 
 		if (!selectedTest.equals(primaryScenarioTest)) {

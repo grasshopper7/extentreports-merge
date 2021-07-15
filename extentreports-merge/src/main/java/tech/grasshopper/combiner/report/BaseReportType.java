@@ -55,7 +55,7 @@ public class BaseReportType implements ReportType {
 		mergedTests = Arrays.stream(FileOperations.readTestsFromJSONReport(combinerOptions.getJsonReportPaths().get(0)))
 				.collect(Collectors.toList());
 
-		primaryJsonReportCheckStrategy.execute(mergedTests);
+		primaryJsonReportCheckStrategy.executeCheck(mergedTests);
 
 		for (int i = 1; i < combinerOptions.getJsonReportPaths().size(); i++) {
 			Path reportPath = combinerOptions.getJsonReportPaths().get(i);
@@ -75,7 +75,7 @@ public class BaseReportType implements ReportType {
 		List<Test> jsonTests = Arrays.stream(FileOperations.readTestsFromJSONReport(reportPath))
 				.collect(Collectors.toList());
 
-		if (!secondaryJsonReportCheckStrategy.execute(jsonTests))
+		if (!secondaryJsonReportCheckStrategy.executeCheck(jsonTests))
 			return;
 
 		for (Test featureTest : jsonTests)

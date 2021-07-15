@@ -19,14 +19,14 @@ public class SecondaryJsonReportCheckStrategy {
 			return new RerunSecondaryJsonReportCheckStrategy();
 
 		try {
-			return (RerunSecondaryJsonReportCheckStrategy) Class.forName(strategy).newInstance();
+			return (SecondaryJsonReportCheckStrategy) Class.forName(strategy).newInstance();
 		} catch (Exception e) {
 			throw new CombinerException(
 					"There is no secondary json report check strategy available for - '" + strategy + "'.");
 		}
 	}
 
-	public boolean execute(List<Test> test) {
+	public boolean executeCheck(List<Test> test) {
 		return true;
 	}
 
@@ -34,7 +34,7 @@ public class SecondaryJsonReportCheckStrategy {
 		public static final String NAME = "RERUN";
 
 		@Override
-		public boolean execute(List<Test> test) {
+		public boolean executeCheck(List<Test> test) {
 			if (SearchTest.passScenarioTestStatusCount(test) > 0)
 				return true;
 
