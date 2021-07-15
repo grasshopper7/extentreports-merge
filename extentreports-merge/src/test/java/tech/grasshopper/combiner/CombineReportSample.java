@@ -27,22 +27,22 @@ public class CombineReportSample {
 
 	@Test
 	public void sameScenarioEarlierStrategyCombine() {
-		createOptionsWithStrategyAndExecute("same scens early", EarlierScenarioTestStrategy.NAME);
+		createOptionsWithMatchingStrategyAndExecute("time", "early", EarlierScenarioTestStrategy.NAME);
 	}
 
 	@Test
 	public void sameScenarioLaterStrategyCombine() {
-		createOptionsWithStrategyAndExecute("same scens later", LaterScenarioTestStrategy.NAME);
+		createOptionsWithMatchingStrategyAndExecute("time", "later", LaterScenarioTestStrategy.NAME);
 	}
 
 	@Test
 	public void sameScenarioHighStatusStrategyCombine() {
-		createOptionsWithStrategyAndExecute("same scens high status", HighStatusScenarioTestStrategy.NAME);
+		createOptionsWithMatchingStrategyAndExecute("status", "high status", HighStatusScenarioTestStrategy.NAME);
 	}
 
 	@Test
 	public void sameScenarioLowStatusStrategyCombine() {
-		createOptionsWithStrategyAndExecute("same scens low status", LowStatusScenarioTestStrategy.NAME);
+		createOptionsWithMatchingStrategyAndExecute("status", "low status", LowStatusScenarioTestStrategy.NAME);
 	}
 
 	@Test
@@ -76,10 +76,13 @@ public class CombineReportSample {
 		return "sample/combine/" + workingDir;
 	}
 
-	private void createOptionsWithStrategyAndExecute(String workingDir, String strategy) {
+	private void createOptionsWithMatchingStrategyAndExecute(String jsonReportDir, String workingDir, String strategy) {
+		workingDir = "matching/" + workingDir;
+		jsonReportDir = "matching/" + jsonReportDir;
+
 		pojoOption = PojoOptions.builder().matchingScenarioTestStrategy(strategy)
-				.jsonReportPaths(createJsonReportList(workingDir)).mergedReportDirPath(createMergedDirPath(workingDir))
-				.configType("xml").build();
+				.jsonReportPaths(createJsonReportList(jsonReportDir))
+				.mergedReportDirPath(createMergedDirPath(workingDir)).configType("xml").build();
 
 		Combiner.main(pojoOption);
 	}
