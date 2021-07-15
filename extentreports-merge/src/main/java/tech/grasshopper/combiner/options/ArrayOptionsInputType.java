@@ -14,6 +14,8 @@ public class ArrayOptionsInputType extends OptionsInputType {
 	private static final String REPORT_TYPE_OPTION = "-reportType";
 	private static final String EXTRA_SCENARIO_TEST_STRATEGY_OPTION = "-extraStrategy";
 	private static final String MATCHING_SCENARIO_TEST_STRATEGY_OPTION = "-matchingStrategy";
+	private static final String PRIMARY_JSON_CHECK_STRATEGY_OPTION = "-primaryJsonStrategy";
+	private static final String SECONDARY_JSON_CHECK_STRATEGY_OPTION = "-secondaryJsonStrategy";
 	private static final String JSON_REPORT_PATHS_OPTION = "-jsonReportPaths";
 	private static final String MEDIA_PATHS_OPTION = "-mediaPaths";
 	private static final String MERGED_REPORT_DIR_PATH_OPTION = "-mergedReportDirPath";
@@ -37,6 +39,12 @@ public class ArrayOptionsInputType extends OptionsInputType {
 			} else if (option.equalsIgnoreCase(MATCHING_SCENARIO_TEST_STRATEGY_OPTION)) {
 				value = getValue(i, MATCHING_SCENARIO_TEST_STRATEGY_OPTION);
 				pojoOptions.setMatchingScenarioTestStrategy(value);
+			} else if (option.equalsIgnoreCase(PRIMARY_JSON_CHECK_STRATEGY_OPTION)) {
+				value = getValue(i, PRIMARY_JSON_CHECK_STRATEGY_OPTION);
+				pojoOptions.setPrimaryJsonReportCheckStrategy(value);
+			} else if (option.equalsIgnoreCase(SECONDARY_JSON_CHECK_STRATEGY_OPTION)) {
+				value = getValue(i, SECONDARY_JSON_CHECK_STRATEGY_OPTION);
+				pojoOptions.setSecondaryJsonReportCheckStrategy(value);
 			} else if (option.equalsIgnoreCase(JSON_REPORT_PATHS_OPTION)) {
 				value = getValue(i, JSON_REPORT_PATHS_OPTION);
 				pojoOptions.setJsonReportPaths(splitAndListFilePaths(value));
