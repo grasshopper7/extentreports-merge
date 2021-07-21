@@ -4,35 +4,39 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>tech.grasshopper</groupId>
 	<artifactId>extentreports-merge</artifactId>
-	<version>1.0.0</version>
+	<version>1.0</version>
 
 	<properties>
 		<project.reporting.outputEncoding>UTF-8
 		</project.reporting.outputEncoding>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
+		<gson.version>2.8.6</gson.version>
+		<extentreports.version>5.0.8</extentreports.version>
+		<lombok.version>1.18.18</lombok.version>
+		<junit.version>4.13.2</junit.version>
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
-			<version>2.8.6</version>
+			<version>${gson.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.aventstack</groupId>
 			<artifactId>extentreports</artifactId>
-			<version>5.0.8</version>
+			<version>${extentreports.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>1.18.18</version>
+			<version>${lombok.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.13.2</version>
+			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
