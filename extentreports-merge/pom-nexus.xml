@@ -5,6 +5,7 @@
 	<groupId>tech.grasshopper</groupId>
 	<artifactId>extentreports-merge</artifactId>
 	<version>1.0</version>
+	<name>extentreports-merge</name>
 	<url>https://grasshopper.tech/2882/</url>
 	<description>Merge extent reports</description>
 

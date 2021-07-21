@@ -5,6 +5,7 @@
 	<groupId>tech.grasshopper</groupId>
 	<artifactId>extentreports-merge</artifactId>
 	<version>1.0</version>
+	<name>extentreports-merge</name>
 
 	<properties>
 		<project.reporting.outputEncoding>UTF-8
