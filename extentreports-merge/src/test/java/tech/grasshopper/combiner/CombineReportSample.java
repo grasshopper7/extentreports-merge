@@ -60,6 +60,22 @@ public class CombineReportSample {
 
 	}
 
+	@Test
+	public void mediaReportsCombine() {
+		String workingDir = "media";
+		List<String> reports = Arrays.asList(new String[] { "sample/combine/" + workingDir + "/first/ExtentJson.json",
+				"sample/combine/" + workingDir + "/second/ExtentJson.json",
+				"sample/combine/" + workingDir + "/no media/ExtentJson.json" });
+		List<String> medias = Arrays.asList(new String[] { "sample/combine/" + workingDir + "/first",
+				"sample/combine/" + workingDir + "/second", "sample/combine/" + workingDir + "/no media" });
+
+		pojoOption = PojoOptions.builder().jsonReportPaths(reports).mergedReportDirPath(createMergedDirPath(workingDir))
+				.mediaPaths(medias).build();
+
+		Combiner.main(pojoOption);
+
+	}
+
 	private void createOptionsAndExecute(String workingDir) {
 		pojoOption = PojoOptions.builder().jsonReportPaths(createJsonReportList(workingDir))
 				.mergedReportDirPath(createMergedDirPath(workingDir)).configType("xml").build();
