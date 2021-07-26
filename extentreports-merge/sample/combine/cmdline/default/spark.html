@@ -79,7 +79,7 @@
 <li class="dropdown">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tag"></i></a>
 <ul id="tag-toggle" class="dropdown-menu dropdown-md p-v-0">
-<a class="dropdown-item" href="#">@tabledoc</a><a class="dropdown-item" href="#">@both</a><a class="dropdown-item" href="#">@scenout</a>
+<a class="dropdown-item" href="#">@both</a><a class="dropdown-item" href="#">@scenout</a><a class="dropdown-item" href="#">@tabledoc</a>
 </ul>
 </li>
 </ul>
@@ -493,52 +493,6 @@ Hello there how r u? Hello there how r u? Hello there how r u? Hello there how r
 <li class="test-item">
 <div class="test-detail">
 <span class="meta">
-<span class='badge log pass-bg'>2</span>
-</span>
-<p class="name">@tabledoc</p>
-<p class="duration text-sm">2 tests</p>
-</div>
-<div class="test-contents d-none">
-<div class="info">
-<h4>@tabledoc</h4>
-<span status="pass" class='badge log pass-bg'>2 passed</span>
-</div>
-<table class='table table-sm mt-4'>
-<thead>
-<tr>
-<th class="status-col">Status</th>
-<th class="timestamp-col">Timestamp</th>
-<th>TestName</th>
-</tr>
-</thead>
-<tbody>
-<tr class="tag-test-status" status="pass">
-<td><span class="badge log pass-bg">Pass</span></td>
-<td>18:55:09 PM</td>
-<td>
-<a href="#" class="linked" test-id='72' id='73'>DataTable Scenario</a>
-<div class="">
-<span class="badge badge-default">DataTable And DocString.DataTable Scenario</span>
-</div>
-</td>
-</tr>
-<tr class="tag-test-status" status="pass">
-<td><span class="badge log pass-bg">Pass</span></td>
-<td>18:55:11 PM</td>
-<td>
-<a href="#" class="linked" test-id='72' id='78'>Doc String to Custom Object</a>
-<div class="">
-<span class="badge badge-default">DataTable And DocString.Doc String to Custom Object</span>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</li>
-<li class="test-item">
-<div class="test-detail">
-<span class="meta">
 <span class='badge log pass-bg'>4</span>
 </span>
 <p class="name">@both</p>
@@ -668,6 +622,52 @@ Hello there how r u? Hello there how r u? Hello there how r u? Hello there how r
 </table>
 </div>
 </li>
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log pass-bg'>2</span>
+</span>
+<p class="name">@tabledoc</p>
+<p class="duration text-sm">2 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>@tabledoc</h4>
+<span status="pass" class='badge log pass-bg'>2 passed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>18:55:09 PM</td>
+<td>
+<a href="#" class="linked" test-id='72' id='73'>DataTable Scenario</a>
+<div class="">
+<span class="badge badge-default">DataTable And DocString.DataTable Scenario</span>
+</div>
+</td>
+</tr>
+<tr class="tag-test-status" status="pass">
+<td><span class="badge log pass-bg">Pass</span></td>
+<td>18:55:11 PM</td>
+<td>
+<a href="#" class="linked" test-id='72' id='78'>Doc String to Custom Object</a>
+<div class="">
+<span class="badge badge-default">DataTable And DocString.Doc String to Custom Object</span>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
 </ul>
 </div>
 </div>
@@ -787,14 +787,6 @@ var timeline = {
 <div class="card-body pb-0 pt-0"><table class="table table-sm table-bordered">
 <thead><tr class="bg-gray"><th>Name</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Others</th><th>Passed %</th></tr></thead><tbody>
 <tr>
-<td>@tabledoc</td>
-<td>2</td>
-<td>0</td>
-<td>0</td>
-<td>0</td>
-<td>100%</td>
-</tr>
-<tr>
 <td>@both</td>
 <td>4</td>
 <td>0</td>
@@ -805,6 +797,14 @@ var timeline = {
 <tr>
 <td>@scenout</td>
 <td>4</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>@tabledoc</td>
+<td>2</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
