@@ -38,12 +38,13 @@ public interface ReportType {
 					.primaryJsonReportCheckStrategy(new RerunPrimaryJsonReportCheckStrategy())
 					.secondaryJsonReportCheckStrategy(new RerunSecondaryJsonReportCheckStrategy()).build();
 
-		// Custom report type
-		try {
-			return (ReportType) Class.forName(reportType).newInstance();
-		} catch (Exception e) {
+		// Custom report type, just throw exception for now
+		/*
+		 * try { return (ReportType) Class.forName(reportType).newInstance(); } catch
+		 * (Exception e) {
+		 */
 			throw new CombinerException("There is no report type availble for - " + reportType + ".");
-		}
+		//}
 	}
 
 	public abstract void generateReport();
