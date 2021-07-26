@@ -11,14 +11,13 @@ public class MediaSample {
 	private PojoOptions pojoOption;
 
 	@Test
-	public void combineTwoReports() {
+	public void combineTwoReportsDefaultMedia() {
 
 		String[] jsonReports = { "sample/combine/media/first/ExtentJson.json",
 				"sample/combine/media/second/ExtentJson.json" };
-		String[] medias = { "sample/combine/media/first", "sample/combine/media/second" };
 		String mergedReportDir = "sample/combine/media/final";
 
-		pojoOption = PojoOptions.builder().jsonReportPaths(Arrays.asList(jsonReports)).mediaPaths(Arrays.asList(medias))
+		pojoOption = PojoOptions.builder().jsonReportPaths(Arrays.asList(jsonReports))
 				.mergedReportDirPath(mergedReportDir).build();
 
 		Combiner.main(pojoOption);
