@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.aventstack.extentreports.model.Media;
+import com.aventstack.extentreports.model.service.MediaService;
 
 import lombok.Builder;
 import lombok.Data;
@@ -43,13 +44,16 @@ public class MediaHandler {
 				.collect(Collectors.toList());
 
 		medias.forEach(m -> {
-			try {
-				Files.copy(sourceMediaFilePathName(m), targetMediaFilePathName(), StandardCopyOption.REPLACE_EXISTING);
-			} catch (Exception e) {
-				throw new CombinerException("Unable to copy media files.", e);
+			if (!MediaService.isBase64(m)) {
+				try {
+					Files.copy(sourceMediaFilePathName(m), targetMediaFilePathName(),
+							StandardCopyOption.REPLACE_EXISTING);
+				} catch (Exception e) {
+					throw new CombinerException("Unable to copy media files.", e);
+				}
+				m.setResolvedPath("");
+				m.setPath(MEDIA_FOLDER + "/" + MEDIA_NAME_PREFIX + MEDIA_NAME_COUNTER + sourceMediaFileExtension);
 			}
-			m.setResolvedPath("");
-			m.setPath(MEDIA_FOLDER + "/" + MEDIA_NAME_PREFIX + MEDIA_NAME_COUNTER + sourceMediaFileExtension);
 		});
 
 		removeReplacedScenarioTestMedias();
@@ -58,15 +62,15 @@ public class MediaHandler {
 	private void removeReplacedScenarioTestMedias() {
 		replacedScenarioTest.getChildren().stream()
 				.flatMap(c -> c.getLogs().stream().map(l -> l.getMedia()).filter(m -> m != null)).forEach(m -> {
-
-					if (Paths.get(options.getMergedReportFolderPath().toString(), MEDIA_FOLDER)
-							.equals(replacedScenarioTestMediaFolder)) {
+					if (!MediaService.isBase64(m)
+							&& Paths.get(options.getMergedReportFolderPath().toString(), MEDIA_FOLDER)
+									.equals(replacedScenarioTestMediaFolder)) {
 						try {
 							Files.deleteIfExists(
 									Paths.get(options.getMergedReportFolderPath().toString(), m.getPath()));
 						} catch (Exception e) {
 							// Silent intentionally. Not a big deal if file is undeleted. Maybe log this.
-							e.printStackTrace();
+							// e.printStackTrace();
 						}
 					}
 
