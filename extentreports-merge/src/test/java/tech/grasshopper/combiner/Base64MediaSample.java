@@ -32,10 +32,7 @@ public class Base64MediaSample {
 		String mergedReportDir = "sample/combine/base64/separate/imgselbase";
 
 		pojoOption = PojoOptions.builder().jsonReportPaths(Arrays.asList(jsonReports))
-				.mergedReportDirPath(mergedReportDir)/*
-														 * .matchingScenarioTestStrategy(MatchingScenarioTestStrategy.
-														 * EarlierScenarioTestStrategy.NAME)
-														 */.build();
+				.mergedReportDirPath(mergedReportDir).build();
 
 		Combiner.main(pojoOption);
 	}
