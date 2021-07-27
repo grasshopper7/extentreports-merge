@@ -7,13 +7,11 @@ import java.nio.file.StandardCopyOption;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.aventstack.extentreports.model.Media;
-import com.aventstack.extentreports.model.service.MediaService;
-
 import lombok.Builder;
 import lombok.Data;
 import tech.grasshopper.combiner.exception.CombinerException;
 import tech.grasshopper.combiner.options.CombinerOptions;
+import tech.grasshopper.combiner.pojo.Media;
 import tech.grasshopper.combiner.pojo.Test;
 
 @Data
@@ -44,7 +42,7 @@ public class MediaHandler {
 				.collect(Collectors.toList());
 
 		medias.forEach(m -> {
-			if (!MediaService.isBase64(m)) {
+			if (m.getBase64() == null || m.getBase64().isEmpty()) {
 				try {
 					Files.copy(sourceMediaFilePathName(m), targetMediaFilePathName(),
 							StandardCopyOption.REPLACE_EXISTING);
@@ -62,7 +60,7 @@ public class MediaHandler {
 	private void removeReplacedScenarioTestMedias() {
 		replacedScenarioTest.getChildren().stream()
 				.flatMap(c -> c.getLogs().stream().map(l -> l.getMedia()).filter(m -> m != null)).forEach(m -> {
-					if (!MediaService.isBase64(m)
+					if ((m.getBase64() == null || m.getBase64().isEmpty())
 							&& Paths.get(options.getMergedReportFolderPath().toString(), MEDIA_FOLDER)
 									.equals(replacedScenarioTestMediaFolder)) {
 						try {

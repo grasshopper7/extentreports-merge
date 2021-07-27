@@ -5,8 +5,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.aventstack.extentreports.Status;
-import com.aventstack.extentreports.model.ExceptionInfo;
-import com.aventstack.extentreports.model.Media;
 
 import lombok.Data;
 

@@ -8,4 +8,5 @@ public class Media {
 	private String path;
 	private String title;
 	private String resolvedPath;
+	private String base64;
 }
